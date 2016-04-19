@@ -3,9 +3,9 @@
  *
  *       Filename:  IrregularButton.h
  *
- *    Description:  
+ *    Description:  1.1: Updated to work with Cocos2d-x 3.10.
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  2014/10/29
  *       Revision:  none
  *       Compiler:  gcc
@@ -46,7 +46,7 @@ class IrregularButton : public cocos2d::ui::Button
 
         /* ====================  OPERATORS     ======================================= */
 
-        virtual bool hitTest(const cocos2d::Vec2 &pt) override;
+		virtual bool hitTest(const cocos2d::Vec2 &pt, const cocos2d::Camera* camera, cocos2d::Vec3 *p) const override;
     protected:
         virtual bool init() override;
         virtual bool init(const std::string& normalImage,
@@ -55,7 +55,7 @@ class IrregularButton : public cocos2d::ui::Button
                 cocos2d::ui::Widget::TextureResType texType = cocos2d::ui::Widget::TextureResType::LOCAL) override;
         void loadNormalTransparentInfo();
         void loadNormalTransparentInfoFromFile();
-        bool getIsTransparentAtPoint(cocos2d::Vec2 point);
+        bool getIsTransparentAtPoint(cocos2d::Vec2 point) const;
 
         /* ====================  DATA MEMBERS  ======================================= */
 

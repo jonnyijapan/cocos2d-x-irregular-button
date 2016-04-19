@@ -139,7 +139,7 @@ void IrregularButton::loadNormalTransparentInfo()
 #if defined(COCOS2D_DEBUG) && (COCOS2D_DEBUG > 0)
     auto stepStart = std::chrono::steady_clock::now();
 #endif
-    Sprite* normalRenderer = static_cast<Sprite*>(_buttonNormalRenderer);
+	auto normalRenderer = _buttonNormalRenderer->getSprite();
     auto normalTexture = normalRenderer->getTexture();
     const Size& s = normalTexture->getContentSizeInPixels();
 #if defined(COCOS2D_DEBUG) && (COCOS2D_DEBUG > 0)
@@ -225,7 +225,7 @@ void IrregularButton::loadNormalTransparentInfo()
 #endif
 }
 
-bool IrregularButton::getIsTransparentAtPoint(cocos2d::Vec2 point)
+bool IrregularButton::getIsTransparentAtPoint(cocos2d::Vec2 point) const
 {
     point.y = _buttonNormalRenderer->getContentSize().height - point.y;
     int x = (int) point.x - 1;
@@ -243,8 +243,7 @@ bool IrregularButton::getIsTransparentAtPoint(cocos2d::Vec2 point)
     return normalTransparent_[normalImageWidth_ * y + x];
 }
 
-bool IrregularButton::hitTest(const Vec2 &pt)
-{
+bool IrregularButton::hitTest(const Vec2 &pt, const Camera* camera, Vec3 *p) const {
     Vec2 localLocation = _buttonNormalRenderer->convertToNodeSpace(pt);
     Rect validTouchedRect;
     validTouchedRect.size = _buttonNormalRenderer->getContentSize();
