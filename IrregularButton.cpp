@@ -171,7 +171,7 @@ void IrregularButton::loadNormalTransparentInfo()
     stepStart = std::chrono::steady_clock::now();
 #endif
     glBindTexture(GL_TEXTURE_2D, normalTexture->getName());
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA4, savedBufferWidth, savedBufferHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, 0);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, savedBufferWidth, savedBufferHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, 0);
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, normalTexture->getName(), 0);
 #if defined(COCOS2D_DEBUG) && (COCOS2D_DEBUG > 0)
     stepEnd = std::chrono::steady_clock::now();
